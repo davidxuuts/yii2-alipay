@@ -1,0 +1,21 @@
+{
+    "name": "davidxu/yii2-alipay",
+    "description": "a Alipay Composer Package",
+    "type": "library",
+    "keywords": ["yii2","extension","alipay"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "David Xu",
+            "email": "david.xu.uts@163.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "davidxu\\alipay\\": ""
+        }
+    }
+}
