@@ -837,23 +837,29 @@ class Alipay
         ($res) or die('支付宝RSA公钥错误。请检查公钥文件格式是否正确');
 
         $blocks = $this->splitCN($data, 0, 30, $charset);
-        $chrtext  = null;
-        $encodes  = array();
+        $chrText  = null;
+
+        $encodes = array();
         foreach ($blocks as $n => $block) {
-            if (!openssl_public_encrypt($block, $chrtext , $res)) {
+            if (!openssl_public_encrypt($block, $chrText , $res)) {
                 echo "<br/>" . openssl_error_string() . "<br/>";
             }
-            $encodes[] = $chrtext ;
+            $encodes[] = $chrText ;
         }
-        $chrtext = implode(",", $encodes);
+        $chrText = implode(",", $encodes);
 
-        return base64_encode($chrtext);
+        return base64_encode($chrText);
     }
 
     /**
      *  在使用本方法前，必须初始化AopClient且传入公私钥参数。
      *  公钥是否是读取字符串还是读取文件，是根据初始化传入的值判断的。
-     **/
+     *
+     * @param $data
+     * @param $rsaPrivateKeyPem
+     * @param $charset
+     * @return string
+     */
     public function rsaDecrypt($data, $rsaPrivateKeyPem, $charset) {
 
         if($this->checkEmpty($this->rsaPrivateKeyFilePath)){
@@ -1287,40 +1293,40 @@ class Alipay
 
     }
 
-    /**
-     * 填充算法
-     * @deprecated
-     * @param string $source
-     * @return string
-     */
-    private function addPKCS7Padding($source){
-        $source = trim($source);
-        $block = mcrypt_get_block_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC);
+//    /**
+//     * 填充算法
+//     * @deprecated
+//     * @param string $source
+//     * @return string
+//     */
+//    private function addPKCS7Padding($source){
+//        $source = trim($source);
+//        $block = mcrypt_get_block_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC);
+//
+//        $pad = $block - (strlen($source) % $block);
+//        if ($pad <= $block) {
+//            $char = chr($pad);
+//            $source .= str_repeat($char, $pad);
+//        }
+//        return $source;
+//    }
 
-        $pad = $block - (strlen($source) % $block);
-        if ($pad <= $block) {
-            $char = chr($pad);
-            $source .= str_repeat($char, $pad);
-        }
-        return $source;
-    }
-
-    /**
-     * @deprecated
-     * 移去填充算法
-     * @param string $source
-     * @return string
-     */
-    private function stripPKSC7Padding($source) {
-        $source = trim($source);
-        $char = substr($source, -1);
-        $num = ord($char);
-        if($num == 62) {
-            return $source;
-        }
-        $source = substr($source,0, -$num);
-        return $source;
-    }
+//    /**
+//     * @deprecated
+//     * 移去填充算法
+//     * @param string $source
+//     * @return string
+//     */
+//    private function stripPKSC7Padding($source) {
+//        $source = trim($source);
+//        $char = substr($source, -1);
+//        $num = ord($char);
+//        if($num == 62) {
+//            return $source;
+//        }
+//        $source = substr($source,0, -$num);
+//        return $source;
+//    }
 
     function echoDebug($content) {
         if ($this->debugInfo) {
