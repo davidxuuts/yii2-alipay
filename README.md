@@ -63,7 +63,7 @@ $bizcontent = json_encode([
 $request->setNotifyUrl($notifyUrl);
 $request->setBizContent($bizcontent);
 
-$orderString = $aop->sdkExecute($request);
+$orderString = $alipay->sdkExecute($request);
 
 // Client side can use this string for orderString directly.
 echo $orderString;
