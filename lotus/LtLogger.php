@@ -1,12 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: davidxu
- * Date: 13/04/2017
- * Time: 11:30 PM
- */
-
 namespace davidxu\alipay\lotus;
 
 class LtLogger

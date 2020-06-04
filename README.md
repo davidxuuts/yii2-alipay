@@ -8,7 +8,7 @@ Description
 
 This is for alipay app pay purpose.
 
-Based on Alipay-SDK-PHP-20170411150151
+Based on Alipay-SDK-PHP-4.9.0
 
 Installation
 ------------
@@ -54,7 +54,7 @@ $request = new AlipayTradeAppPayRequest();
 $bizcontent = json_encode([
                   'body' => 'Body of test data',
                   'subject' => 'App Pay Test',
-                  'out_trade_no' => '2017012511013510000',
+                  'out_trade_no' => '2020012511013510000',
                   'timeout_express' => '30m',
                   'total_amount' => '0.01',
                   'product_code' => 'QUICK_MSECURITY_PAY',

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: davidxu
- * Date: 14/04/2017
- * Time: 12:49 AM
- */
 
 namespace davidxu\alipay\lotus;
 

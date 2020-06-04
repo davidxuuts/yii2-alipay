@@ -1,6 +1,6 @@
 {
     "name": "davidxu/yii2-alipay",
-    "description": "a Alipay Composer Package",
+    "description": "an Alipay Composer Package",
     "type": "library",
     "keywords": ["yii2","extension","alipay"],
     "license": "MIT",
